@@ -26,27 +26,27 @@ Generate language-specific CI test matrices based on repository configuration wi
 
 ## Inputs
 
-| Input | Description | Default |
-|-------|-------------|---------|
-| `repository-config` | Repository configuration as JSON | `{}` |
-| `fallback-go-version` | Fallback Go version | `1.23` |
-| `fallback-python-version` | Fallback Python version | `3.12` |
-| `fallback-rust-version` | Fallback Rust version | `1.75` |
-| `fallback-node-version` | Fallback Node.js version | `22` |
-| `fallback-coverage-threshold` | Fallback coverage threshold | `80` |
-| `include-linux` | Include ubuntu-latest | `true` |
-| `include-macos` | Include macos-latest | `false` |
-| `include-windows` | Include windows-latest | `false` |
+| Input                         | Description                      | Default |
+| ----------------------------- | -------------------------------- | ------- |
+| `repository-config`           | Repository configuration as JSON | `{}`    |
+| `fallback-go-version`         | Fallback Go version              | `1.23`  |
+| `fallback-python-version`     | Fallback Python version          | `3.12`  |
+| `fallback-rust-version`       | Fallback Rust version            | `1.75`  |
+| `fallback-node-version`       | Fallback Node.js version         | `22`    |
+| `fallback-coverage-threshold` | Fallback coverage threshold      | `80`    |
+| `include-linux`               | Include ubuntu-latest            | `true`  |
+| `include-macos`               | Include macos-latest             | `false` |
+| `include-windows`             | Include windows-latest           | `false` |
 
 ## Outputs
 
-| Output | Description |
-|--------|-------------|
-| `go-matrix` | Go CI matrix as JSON |
-| `python-matrix` | Python CI matrix as JSON |
-| `rust-matrix` | Rust CI matrix as JSON |
-| `frontend-matrix` | Frontend/Node.js CI matrix as JSON |
-| `coverage-threshold` | Coverage threshold percentage |
+| Output               | Description                        |
+| -------------------- | ---------------------------------- |
+| `go-matrix`          | Go CI matrix as JSON               |
+| `python-matrix`      | Python CI matrix as JSON           |
+| `rust-matrix`        | Rust CI matrix as JSON             |
+| `frontend-matrix`    | Frontend/Node.js CI matrix as JSON |
+| `coverage-threshold` | Coverage threshold percentage      |
 
 ## Matrix Format
 
