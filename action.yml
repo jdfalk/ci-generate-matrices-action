@@ -1,0 +1,96 @@
+# file: action.yml
+# version: 1.0.0
+# guid: 5e6f7a8b-9c0d-1e2f-3a4b-5c6d7e8f9a0b
+
+name: "Generate CI Test Matrices"
+description: "Generate CI test matrices for Go, Python, Rust, and Node.js based on repository config"
+author: "jdfalk"
+
+branding:
+  icon: "layers"
+  color: "green"
+
+inputs:
+  repository-config:
+    description: "Repository configuration as JSON string"
+    required: false
+    default: "{}"
+
+  fallback-go-version:
+    description: "Fallback Go version if not specified in config"
+    required: false
+    default: "1.23"
+
+  fallback-python-version:
+    description: "Fallback Python version if not specified in config"
+    required: false
+    default: "3.12"
+
+  fallback-rust-version:
+    description: "Fallback Rust version if not specified in config"
+    required: false
+    default: "1.75"
+
+  fallback-node-version:
+    description: "Fallback Node.js version if not specified in config"
+    required: false
+    default: "22"
+
+  fallback-coverage-threshold:
+    description: "Fallback coverage threshold if not specified in config"
+    required: false
+    default: "80"
+
+  include-linux:
+    description: "Include ubuntu-latest in matrix"
+    required: false
+    default: "true"
+
+  include-macos:
+    description: "Include macos-latest in matrix"
+    required: false
+    default: "false"
+
+  include-windows:
+    description: "Include windows-latest in matrix"
+    required: false
+    default: "false"
+
+outputs:
+  go-matrix:
+    description: "Go CI matrix as JSON"
+    value: ${{ steps.generate.outputs.go-matrix }}
+
+  python-matrix:
+    description: "Python CI matrix as JSON"
+    value: ${{ steps.generate.outputs.python-matrix }}
+
+  rust-matrix:
+    description: "Rust CI matrix as JSON"
+    value: ${{ steps.generate.outputs.rust-matrix }}
+
+  frontend-matrix:
+    description: "Frontend CI matrix as JSON"
+    value: ${{ steps.generate.outputs.frontend-matrix }}
+
+  coverage-threshold:
+    description: "Coverage threshold percentage"
+    value: ${{ steps.generate.outputs.coverage-threshold }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Generate matrices
+      id: generate
+      shell: python
+      env:
+        REPOSITORY_CONFIG: ${{ inputs.repository-config }}
+        FALLBACK_GO_VERSION: ${{ inputs.fallback-go-version }}
+        FALLBACK_PYTHON_VERSION: ${{ inputs.fallback-python-version }}
+        FALLBACK_RUST_VERSION: ${{ inputs.fallback-rust-version }}
+        FALLBACK_NODE_VERSION: ${{ inputs.fallback-node-version }}
+        FALLBACK_COVERAGE_THRESHOLD: ${{ inputs.fallback-coverage-threshold }}
+        INCLUDE_LINUX: ${{ inputs.include-linux }}
+        INCLUDE_MACOS: ${{ inputs.include-macos }}
+        INCLUDE_WINDOWS: ${{ inputs.include-windows }}
+      run: python "${{ github.action_path }}/src/generate_matrices.py"
