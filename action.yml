@@ -1,5 +1,5 @@
 # file: action.yml
-# version: 1.0.0
+# version: 1.0.1
 # guid: 5e6f7a8b-9c0d-1e2f-3a4b-5c6d7e8f9a0b
 
 name: "Generate CI Test Matrices"
@@ -82,7 +82,7 @@ runs:
   steps:
     - name: Generate matrices
       id: generate
-      shell: python
+      shell: bash
       env:
         REPOSITORY_CONFIG: ${{ inputs.repository-config }}
         FALLBACK_GO_VERSION: ${{ inputs.fallback-go-version }}
