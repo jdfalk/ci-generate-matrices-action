@@ -1,6 +1,7 @@
 # Generate CI Test Matrices Action
 
-Generate language-specific CI test matrices based on repository configuration with intelligent fallback handling.
+Generate language-specific CI test matrices based on repository configuration
+with intelligent fallback handling.
 
 ## Usage
 
@@ -68,13 +69,14 @@ strategy:
 
 ## Features
 
-✅ **Config-Driven** - Reads versions from repository config
-✅ **Fallback Handling** - Intelligent defaults when config missing
-✅ **Multi-Platform** - Select which OSes to include
-✅ **Coverage Thresholds** - Propagate coverage requirements
-✅ **JSON Output** - Direct integration with matrix jobs
+✅ **Config-Driven** - Reads versions from repository config ✅ **Fallback
+Handling** - Intelligent defaults when config missing ✅ **Multi-Platform** -
+Select which OSes to include ✅ **Coverage Thresholds** - Propagate coverage
+requirements ✅ **JSON Output** - Direct integration with matrix jobs
 
 ## Related Actions
 
-- [load-config-action](https://github.com/jdfalk/load-config-action) - Load repository config
-- [detect-languages-action](https://github.com/jdfalk/detect-languages-action) - Detect project languages
+- [load-config-action](https://github.com/jdfalk/load-config-action) - Load
+  repository config
+- [detect-languages-action](https://github.com/jdfalk/detect-languages-action) -
+  Detect project languages
