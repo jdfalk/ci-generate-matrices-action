@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # file: src/generate_matrices.py
-# version: 1.0.0
+# version: 1.0.1
 # guid: 5e6f7a8b-9c0d-1e2f-3a4b-5c6d7e8f9a0b
 
 """Generate CI test matrices for Go, Python, Rust, and Node.js"""
@@ -41,39 +41,37 @@ def main():
         oses.append("windows-latest")
 
     # Generate Go matrix
-    go_versions = ci_config.get("go", {}).get("versions", [os.environ.get("FALLBACK_GO_VERSION", "1.23")])
-    go_matrix = {
-        "go-version": go_versions,
-        "os": oses
-    }
+    go_versions = ci_config.get("go", {}).get(
+        "versions", [os.environ.get("FALLBACK_GO_VERSION", "1.23")]
+    )
+    go_matrix = {"go-version": go_versions, "os": oses}
     write_output("go-matrix", json.dumps(go_matrix, separators=(",", ":")))
 
     # Generate Python matrix
-    python_versions = ci_config.get("python", {}).get("versions", [os.environ.get("FALLBACK_PYTHON_VERSION", "3.12")])
-    python_matrix = {
-        "python-version": python_versions,
-        "os": oses
-    }
+    python_versions = ci_config.get("python", {}).get(
+        "versions", [os.environ.get("FALLBACK_PYTHON_VERSION", "3.12")]
+    )
+    python_matrix = {"python-version": python_versions, "os": oses}
     write_output("python-matrix", json.dumps(python_matrix, separators=(",", ":")))
 
     # Generate Rust matrix
-    rust_versions = ci_config.get("rust", {}).get("versions", [os.environ.get("FALLBACK_RUST_VERSION", "1.75")])
-    rust_matrix = {
-        "rust-version": rust_versions,
-        "os": oses
-    }
+    rust_versions = ci_config.get("rust", {}).get(
+        "versions", [os.environ.get("FALLBACK_RUST_VERSION", "1.75")]
+    )
+    rust_matrix = {"rust-version": rust_versions, "os": oses}
     write_output("rust-matrix", json.dumps(rust_matrix, separators=(",", ":")))
 
     # Generate Node.js matrix
-    node_versions = ci_config.get("frontend", {}).get("node-versions", [os.environ.get("FALLBACK_NODE_VERSION", "22")])
-    frontend_matrix = {
-        "node-version": node_versions,
-        "os": oses
-    }
+    node_versions = ci_config.get("frontend", {}).get(
+        "node-versions", [os.environ.get("FALLBACK_NODE_VERSION", "22")]
+    )
+    frontend_matrix = {"node-version": node_versions, "os": oses}
     write_output("frontend-matrix", json.dumps(frontend_matrix, separators=(",", ":")))
 
     # Coverage threshold
-    coverage_threshold = ci_config.get("coverage", {}).get("threshold", os.environ.get("FALLBACK_COVERAGE_THRESHOLD", "80"))
+    coverage_threshold = ci_config.get("coverage", {}).get(
+        "threshold", os.environ.get("FALLBACK_COVERAGE_THRESHOLD", "80")
+    )
     write_output("coverage-threshold", str(coverage_threshold))
 
     # Summary
