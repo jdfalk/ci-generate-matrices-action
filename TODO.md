@@ -1,5 +1,5 @@
 <!-- file: TODO.md -->
-<!-- version: 1.0.0 -->
+<!-- version: 1.0.3 -->
 <!-- guid: cc196cf7-00c6-4faf-ba30-61180c949a54 -->
 
 # TODO - ci-generate-matrices-action
@@ -40,4 +40,8 @@ Generates CI test matrices based on detected languages and configurations
 
 ---
 
-*This TODO.md was automatically generated on 2026-01-02*
+<!-- markdownlint-disable MD036 -->
+
+This TODO.md was automatically generated on 2026-01-02.
+
+<!-- markdownlint-enable MD036 -->
