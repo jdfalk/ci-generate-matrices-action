@@ -1,5 +1,5 @@
 # file: action.yml
-# version: 1.1.0
+# version: 1.0.1
 # guid: 5e6f7a8b-9c0d-1e2f-3a4b-5c6d7e8f9a0b
 
 name: "Generate CI Test Matrices"
@@ -62,7 +62,7 @@ inputs:
   docker-image:
     description: "Docker image reference (tag or digest) to use when use-docker is true"
     required: false
-    default: "ghcr.io/jdfalk/ci-generate-matrices-action:main"
+    default: "ghcr.io/jdfalk/ci-generate-matrices-action:v1.0.1@sha256:c7395befc983cf86617427a2321632a7ab84fb867a678a123cdb8b90ce01d3ec"
 
 outputs:
   go-matrix:
