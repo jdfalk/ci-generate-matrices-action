@@ -1,7 +1,7 @@
 # Generate CI Test Matrices Action
 
 Generate language-specific CI test matrices based on repository configuration
-with intelligent fallback handling.
+with intelligent fallback handling and optional dockerized execution.
 
 ## Usage
 
@@ -25,19 +25,31 @@ with intelligent fallback handling.
     go-version: ${{ matrix.go-version }}
 ```
 
+### Force Docker Execution
+
+```yaml
+- uses: jdfalk/ci-generate-matrices-action@v1
+  id: matrices
+  with:
+    use-docker: true
+    docker-image: ghcr.io/jdfalk/ci-generate-matrices-action:main
+```
+
 ## Inputs
 
-| Input                         | Description                      | Default |
-| ----------------------------- | -------------------------------- | ------- |
-| `repository-config`           | Repository configuration as JSON | `{}`    |
-| `fallback-go-version`         | Fallback Go version              | `1.23`  |
-| `fallback-python-version`     | Fallback Python version          | `3.12`  |
-| `fallback-rust-version`       | Fallback Rust version            | `1.75`  |
-| `fallback-node-version`       | Fallback Node.js version         | `22`    |
-| `fallback-coverage-threshold` | Fallback coverage threshold      | `80`    |
-| `include-linux`               | Include ubuntu-latest            | `true`  |
-| `include-macos`               | Include macos-latest             | `false` |
-| `include-windows`             | Include windows-latest           | `false` |
+| Input                         | Description                                                      | Default                                           |
+| ----------------------------- | ---------------------------------------------------------------- | ------------------------------------------------- |
+| `repository-config`           | Repository configuration as JSON                                 | `{}`                                              |
+| `fallback-go-version`         | Fallback Go version                                              | `1.23`                                            |
+| `fallback-python-version`     | Fallback Python version                                          | `3.12`                                            |
+| `fallback-rust-version`       | Fallback Rust version                                            | `1.75`                                            |
+| `fallback-node-version`       | Fallback Node.js version                                         | `22`                                              |
+| `fallback-coverage-threshold` | Fallback coverage threshold                                      | `80`                                              |
+| `include-linux`               | Include ubuntu-latest                                            | `true`                                            |
+| `include-macos`               | Include macos-latest                                             | `false`                                           |
+| `include-windows`             | Include windows-latest                                           | `false`                                           |
+| `use-docker`                  | Run the action inside the published container image              | `false`                                           |
+| `docker-image`                | Docker image reference (tag or digest) when `use-docker` is true | `ghcr.io/jdfalk/ci-generate-matrices-action:main` |
 
 ## Outputs
 
