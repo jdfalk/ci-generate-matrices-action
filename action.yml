@@ -62,7 +62,7 @@ inputs:
   docker-image:
     description: "Docker image reference (tag or digest) to use when use-docker is true"
     required: false
-    default: "ghcr.io/jdfalk/ci-generate-matrices-action:v1.1.5@sha256:032c02d524814858fcdd4db52d9b35db50c7dcd981b86af70d18d4d7d1c2cddd"
+    default: "ghcr.io/jdfalk/ci-generate-matrices-action:v1.1.5@sha256:a342babdd7f32b094bdc9e4e8c55d8fecc854868f82db39a1650c7e1d7836628"
 
 outputs:
   go-matrix:
